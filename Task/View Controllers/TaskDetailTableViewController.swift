@@ -14,20 +14,38 @@ class TaskDetailTableViewController: UITableViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var dueDateTextField: UITextField!
     @IBOutlet weak var notesTextView: UITextView!
+    @IBOutlet var dueDatePicker: UIDatePicker!
     
     //MARK: - Properties
-    var task: Task?
+    var task: Task? {
+        didSet {
+            updateViews()
+        }
+    }
     var dueDateValue: Date?
     
     //MARK: - Lifecycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateViews()
+        dueDateTextField.inputView = dueDatePicker
+//        updateViews()
     }
     
     //MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
-        updateTask()
+        print("saved")
+        guard let name = nameTextField.text, !name.isEmpty, let note = notesTextView.text, !note.isEmpty, let date = dueDateValue else {return}
+        if let task = task {
+            print("update task")
+            TaskController.shared.update(task: task, name: name, notes: note, due: date)
+        } else {
+            print("add task")
+            TaskController.shared.add(name: name, notes: note, due: date)
+        }
+        nameTextField.text = ""
+        notesTextView.text = ""
+        navigationController?.popViewController(animated: true)
+
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
@@ -46,18 +64,6 @@ class TaskDetailTableViewController: UITableViewController {
     }
     
     //MARK: - Helper Functions
-    func updateTask() {
-        guard let name = nameTextField.text, !name.isEmpty, let note = notesTextView.text, !note.isEmpty, let date = dueDateValue else {return}
-        if let task = task {
-            TaskController.shared.update(task: task, name: name, notes: note, due: date)
-        } else {
-            TaskController.shared.add(name: name, notes: note, due: date)
-        }
-        nameTextField.text = ""
-        notesTextView.text = ""
-        navigationController?.popViewController(animated: true)
-    }
-    
     func updateViews() {
         guard let task = task else {return}
         nameTextField.text = task.name

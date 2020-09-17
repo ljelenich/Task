@@ -17,15 +17,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="Wo7-sJ-Owj">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" rowHeight="78" id="Wo7-sJ-Owj" customClass="ButtonTableViewCell" customModule="Task" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="78"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wo7-sJ-Owj" id="qWM-Ge-qMs">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="78"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYx-qC-AKL">
+                                            <rect key="frame" x="381" y="26.5" width="25" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="cgY-Wr-NhP"/>
+                                                <constraint firstAttribute="width" constant="25" id="ivp-4P-hkh"/>
+                                            </constraints>
+                                            <state key="normal" image="incomplete"/>
+                                            <connections>
+                                                <action selector="buttonTapped:" destination="Wo7-sJ-Owj" eventType="touchUpInside" id="6Ty-wK-bH8"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEy-m3-ODG">
+                                            <rect key="frame" x="28" y="28.5" width="345" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="VYx-qC-AKL" firstAttribute="centerY" secondItem="qWM-Ge-qMs" secondAttribute="centerY" id="CNp-WF-6cG"/>
+                                        <constraint firstItem="aEy-m3-ODG" firstAttribute="leading" secondItem="qWM-Ge-qMs" secondAttribute="leadingMargin" constant="8" id="JwT-v8-Lhj"/>
+                                        <constraint firstAttribute="trailing" secondItem="VYx-qC-AKL" secondAttribute="trailing" constant="8" id="f9l-vf-70K"/>
+                                        <constraint firstItem="VYx-qC-AKL" firstAttribute="leading" secondItem="aEy-m3-ODG" secondAttribute="trailing" constant="8" id="g51-3r-yZM"/>
+                                        <constraint firstItem="aEy-m3-ODG" firstAttribute="centerY" secondItem="qWM-Ge-qMs" secondAttribute="centerY" id="k20-rV-DFE"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="BEY-NO-de3" kind="show" identifier="taskCell" trigger="accessoryAction" id="cFz-W4-jmM"/>
+                                    <outlet property="completeButton" destination="VYx-qC-AKL" id="GTa-65-ThM"/>
+                                    <outlet property="primaryLabel" destination="aEy-m3-ODG" id="66O-uQ-qTe"/>
+                                    <segue destination="BEY-NO-de3" kind="show" identifier="showCellDetail" trigger="accessoryAction" id="cFz-W4-jmM"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -44,7 +72,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCg-zH-812" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="519" y="138"/>
+            <point key="canvasLocation" x="518.84057971014499" y="137.94642857142856"/>
         </scene>
         <!--Task Detail Table View Controller-->
         <scene sceneID="VHM-LD-p2f">
@@ -151,6 +179,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dueDatePicker" destination="Ynr-fk-fug" id="1fh-c8-WEi"/>
                         <outlet property="dueDateTextField" destination="Gp3-lT-EDj" id="zfR-2t-akh"/>
                         <outlet property="nameTextField" destination="wL4-Bw-1H1" id="DVc-7I-0b7"/>
                         <outlet property="notesTextView" destination="Ju9-YB-nHu" id="EQS-lw-Z0A"/>
@@ -193,6 +222,7 @@
         <segue reference="cFz-W4-jmM"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="incomplete" width="512" height="512"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
