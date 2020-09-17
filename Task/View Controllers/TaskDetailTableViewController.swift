@@ -17,18 +17,14 @@ class TaskDetailTableViewController: UITableViewController {
     @IBOutlet var dueDatePicker: UIDatePicker!
     
     //MARK: - Properties
-    var task: Task? {
-        didSet {
-            updateViews()
-        }
-    }
+    var task: Task?
     var dueDateValue: Date?
     
     //MARK: - Lifecycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         dueDateTextField.inputView = dueDatePicker
-//        updateViews()
+        updateViews()
     }
     
     //MARK: - Actions

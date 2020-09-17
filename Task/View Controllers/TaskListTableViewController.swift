@@ -16,7 +16,6 @@ class TaskListTableViewController: UITableViewController {
         TaskController.shared.fetchedResultsController.delegate = self
     }
 
-    
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return TaskController.shared.fetchedResultsController.sections?.count ?? 0

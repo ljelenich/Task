@@ -26,7 +26,6 @@ class TaskController {
         } catch {
             
         }
-//        tasks = fetchTasks()
     }
     
     func add(name: String, notes: String, due: Date) {
@@ -54,11 +53,7 @@ class TaskController {
             print("\(error.localizedDescription)")
         }
     }
-    
-//    func fetchTasks() -> [Task] {
-//        return mockTasks
-//    }
-    
+
     func toggleIsCompleteFor(task: Task) {
         task.isComplete = !task.isComplete
         saveToPersistentStore()

@@ -34,20 +34,5 @@ class ButtonTableViewCell: UITableViewCell {
         primaryLabel.text = task.name
         updatButton(task.isComplete)
     }
-    
-    
-    
-    
-    
-    
-    
-    
-
 }
 
-//extension ButtonTableViewCell {
-//    func updatButton(_ isComplete: Bool) {
-//        let imageUpdate = isComplete ? "incomplete" : "complete"
-//        completeButton.setImage(UIImage(named: imageUpdate), for: .normal)
-//    }
-//}
