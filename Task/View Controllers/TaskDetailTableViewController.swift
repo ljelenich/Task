@@ -10,18 +10,22 @@ import UIKit
 
 class TaskDetailTableViewController: UITableViewController {
 
+    //MARK: - Outlets
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var dueDateTextField: UITextField!
     @IBOutlet weak var notesTextView: UITextView!
     
+    //MARK: - Properties
     var task: Task?
     var dueDateValue: Date?
     
+    //MARK: - Lifecycle Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
     }
     
+    //MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: Any) {
         updateTask()
     }
@@ -30,10 +34,20 @@ class TaskDetailTableViewController: UITableViewController {
         navigationController?.popViewController(animated: true)
     }
     
- 
+    @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
+        dueDateTextField.text = sender.date.stringValue()
+        self.dueDateValue = sender.date
+    }
+    
+    @IBAction func userTappedView(_ sender: Any) {
+        nameTextField.resignFirstResponder()
+        notesTextView.resignFirstResponder()
+        dueDateTextField.resignFirstResponder()
+    }
+    
+    //MARK: - Helper Functions
     func updateTask() {
         guard let name = nameTextField.text, !name.isEmpty, let note = notesTextView.text, !note.isEmpty, let date = dueDateValue else {return}
-        
         if let task = task {
             TaskController.shared.update(task: task, name: name, notes: note, due: date)
         } else {
@@ -48,6 +62,7 @@ class TaskDetailTableViewController: UITableViewController {
         guard let task = task else {return}
         nameTextField.text = task.name
         notesTextView.text = task.notes
+        dueDateTextField.text = task.due?.stringValue()
         
     }
 }

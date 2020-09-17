@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C1CE6B12513E3BA00E00DC7 /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1CE6B02513E3BA00E00DC7 /* DateHelpers.swift */; };
 		6CC61D742512B04200CF8304 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC61D732512B04200CF8304 /* AppDelegate.swift */; };
 		6CC61D762512B04200CF8304 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC61D752512B04200CF8304 /* SceneDelegate.swift */; };
 		6CC61D7B2512B04200CF8304 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CC61D792512B04200CF8304 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6C1CE6B02513E3BA00E00DC7 /* DateHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelpers.swift; sourceTree = "<group>"; };
 		6CC61D702512B04200CF8304 /* Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Task.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CC61D732512B04200CF8304 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6CC61D752512B04200CF8304 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C1CE6AF2513E39C00E00DC7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6C1CE6B02513E3BA00E00DC7 /* DateHelpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		6CC61D672512B04200CF8304 = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +76,7 @@
 		6CC61D722512B04200CF8304 /* Task */ = {
 			isa = PBXGroup;
 			children = (
+				6C1CE6AF2513E39C00E00DC7 /* Helpers */,
 				6CC61D8E2512B0C200CF8304 /* Views */,
 				6CC61D8D2512B0BA00CF8304 /* Model */,
 				6CC61D8C2512B0A600CF8304 /* Model Controllers */,
@@ -201,6 +212,7 @@
 				6CC61D922512B2E000CF8304 /* TaskDetailTableViewController.swift in Sources */,
 				6CC61D982512B67300CF8304 /* TaskController.swift in Sources */,
 				6CC61D762512B04200CF8304 /* SceneDelegate.swift in Sources */,
+				6C1CE6B12513E3BA00E00DC7 /* DateHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
